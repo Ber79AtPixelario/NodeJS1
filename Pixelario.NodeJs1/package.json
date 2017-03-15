@@ -1,0 +1,10 @@
+{
+  "name": "pixelario.node-js1",
+  "version": "0.0.0",
+  "description": "Pixelario.NodeJs1",
+  "main": "server.js",
+  "author": {
+    "name": "Escritorio",
+    "email": ""
+  }
+}
