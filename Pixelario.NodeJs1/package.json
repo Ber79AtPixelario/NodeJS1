@@ -2,9 +2,13 @@
   "name": "pixelario.node-js1",
   "version": "0.0.0",
   "description": "Pixelario.NodeJs1",
-  "main": "server.js",
+  "main": "index.js",
   "author": {
-    "name": "Escritorio",
-    "email": ""
+    "name": "Pixelario (http://www.pixelario.com.ar/)",
+    "email": "contacto@pixelario.com.ar"
+  },
+  "license": "MIT"
+  "dependencies": {
+    "express": "^4.15.2"
   }
 }
