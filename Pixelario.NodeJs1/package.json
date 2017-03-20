@@ -4,11 +4,12 @@
   "description": "Pixelario.NodeJs1",
   "main": "index.js",
   "author": {
-    "name": "Pixelario (http://www.pixelario.com.ar/)",
+    "name": "Pixelario",
     "email": "contacto@pixelario.com.ar"
   },
-  "license": "MIT"
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0"
   }
 }
