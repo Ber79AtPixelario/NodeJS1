@@ -31,8 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="config\app.js" />
+    <Compile Include="controllers\userController.js" />
     <Compile Include="index.js" />
     <Compile Include="js\jquery.bvalidator-yc.js" />
+    <Compile Include="models\user.js" />
     <Compile Include="server.js" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />
@@ -44,15 +46,20 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\admin\home\index.handlebars" />
+    <Content Include="views\admin\users\new.handlebars" />
+    <Content Include="views\admin\users\list.handlebars" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
     <Folder Include="img\" />
     <Folder Include="js\" />
     <Folder Include="config\" />
+    <Folder Include="models\" />
+    <Folder Include="controllers\" />
     <Folder Include="views\" />
     <Folder Include="views\admin\" />
     <Folder Include="views\admin\home\" />
+    <Folder Include="views\admin\users\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
