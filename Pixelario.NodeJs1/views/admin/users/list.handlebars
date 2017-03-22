@@ -7,9 +7,49 @@
 </head>
 <body>
 	<h1>Nuevo usuario</h1>
-		{{#users}}
-		Email: {{user.email}}		
+	<table>
+		<thead>
+			<tr>
+				<th>
+					Usuario
+				</th>
+                <th style="width: 80px;">
+					Permisos
+				</th>
+                <th style="width: 80px;">
+					Contraseña
+				</th>
+                
+					<th style="width: 80px;">
+						Borrar
+					</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+	{{#if users}}
+		{{# users}}
+			<tr>
+				<td>
+					{{user.email}}
+				</td>
+					<td>
+						<a href="/admin/users/roles/edit/{{user.id}}" class = "boton_grilla group_gear" title="Editar Roles">Editar Roles</a>
+					</td>
+					<td>
+						<a href="/admin/users/password/edit/{{user.id}}" class="boton_grilla key" title="Cambiar Contraseña">Cambiar Contraseña</a>
+					</td>
+					<td>
+						<form action="/admin/users/delete/{{user.id}}" method="post">
+							<input type="image" src="/img/icons/bin.png" value="Eliminar Usuario" title="Eliminar Usuario"
+								alt="Eliminar Usuario" />
+						</form>
+				</td>                    
+			</tr>
 		{{/users}}	
+	{{else}}
+		sin usuarios
+	{{/if}}
 	<a href="/admin/users/new" title="Nuevo">Nuevo<a>
 </body>
 </html>

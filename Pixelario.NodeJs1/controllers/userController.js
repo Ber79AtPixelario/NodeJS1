@@ -4,13 +4,13 @@ exports.list = function (req, res) {
     Users.find({}).exec(function (err, users) {
         var _users = [];
         users.forEach(function (item) { 
-            _users.push({ user: { email: item.email } });
+            _users.push({ user: { id: item._id, email: item.email } });
         });
         console.log(_users);
         res.render('admin/users/list', {
+            users: _users,
             helpers: {
-                appName: config.name,
-                users: _users
+                appName: config.name,               
             }, layout: false
         });
     });

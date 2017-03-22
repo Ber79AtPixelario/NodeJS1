@@ -10,7 +10,13 @@ app.use(bodyParser.json());
 
 //express-handlebars es el motor de template
 var exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main', 
+    helpers: {
+        json: function (context) { return JSON.stringify(context); }
+    }
+}));
+
 app.set('view engine', 'handlebars');
 
 var config = require('./config/app');
