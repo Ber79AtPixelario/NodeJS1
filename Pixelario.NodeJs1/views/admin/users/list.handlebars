@@ -1,14 +1,11 @@
-﻿<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>{{ appName }}</title>
-</head>
-<body>
-	<h1>Nuevo usuario</h1>
-	<table>
-		<thead>
+﻿﻿<div id="box">
+	<h3>Nuevo usuario</h2>
+	<div>
+	
+		
+	{{#if users}}
+<table>
+		
 			<tr>
 				<th>
 					Usuario
@@ -18,16 +15,11 @@
 				</th>
                 <th style="width: 80px;">
 					Contraseña
-				</th>
-                
-					<th style="width: 80px;">
-						Borrar
-					</th>
-				
+				</th>                
+				<th style="width: 80px;">
+					Borrar
+				</th>				
 			</tr>
-		</thead>
-		<tbody>
-	{{#if users}}
 		{{# users}}
 			<tr>
 				<td>
@@ -47,9 +39,13 @@
 				</td>                    
 			</tr>
 		{{/users}}	
+	<tr>
+		<td colspan="3"></td><td><a href="/admin/users/new" title="Nuevo usuario" class = "boton_grilla add">Nuevo usuario<a></td>
+	</tr>	
+	</table>
 	{{else}}
-		sin usuarios
-	{{/if}}
-	<a href="/admin/users/new" title="Nuevo">Nuevo<a>
-</body>
-</html>
+		No hay usuarios en la Base de datos.
+		<a href="/admin/users/new" title="Nuevo usuario" class = "comandos_box add>Nuevo usuario<a>		
+	{{/if}}	
+</div>
+</div>
