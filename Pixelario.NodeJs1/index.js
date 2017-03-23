@@ -8,6 +8,9 @@ var router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+
+
 //express-handlebars es el motor de template
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({
