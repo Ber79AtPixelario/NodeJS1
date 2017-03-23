@@ -55,7 +55,7 @@ app.post('/admin/users/new', userController.new);
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));
 app.use('/js', express.static(__dirname + '/js'));
-app.listen(3000, function () {
+app.listen(3001, function () {
     console.log(__dirname + '/');
     console.log('API REST corriendo en http://localhost:3000');
 });

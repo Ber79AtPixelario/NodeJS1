@@ -11,7 +11,8 @@ exports.list = function (req, res) {
             users: _users,
             helpers: {
                 appName: config.name,               
-            }, layout: false
+            }, 
+            layout: '../../views/admin/layout/CMS',
         });
     });
 }
