@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+.ntvs_analysis.dat
 
 # Build results
 
