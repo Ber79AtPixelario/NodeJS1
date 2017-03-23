@@ -46,6 +46,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\admin\home\index.handlebars" />
+    <Content Include="views\admin\layout\CMS.handlebars" />
     <Content Include="views\admin\users\new.handlebars" />
     <Content Include="views\admin\users\list.handlebars" />
   </ItemGroup>
@@ -59,6 +60,8 @@
     <Folder Include="views\" />
     <Folder Include="views\admin\" />
     <Folder Include="views\admin\home\" />
+    <Folder Include="views\admin\layout\" />
+    <Folder Include="views\admin\partials\" />
     <Folder Include="views\admin\users\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
