@@ -6,7 +6,7 @@
 *.user
 *.sln.docstates
 *.dat
-
+Pixelario.NodeJs1/.ntvs_analysis.dat
 # Build results
 
 [Dd]ebug/
