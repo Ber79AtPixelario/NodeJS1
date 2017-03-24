@@ -42,11 +42,24 @@ exports.get = function (req, res) {
             firstname: user.first_name,
             lastname: user.last_name
         };
-        console.log(_user);
         res.render('admin/users/edit', {
             user: _user,
             appName: config.name,
             layout: '../../views/admin/layout/CMS',
+        });
+    });
+};
+exports.update = function (req, res) {
+    Users.findById(req.params.id, function (err, user) {
+        user.first_name = req.body.firstname;
+        user.last_name = req.body.lastname;
+        user.save(function (error, documento) {
+            if (error) {
+                res.send(error);
+            }
+            else {
+                res.redirect('/admin/users');
+            }
         });
     });
 };

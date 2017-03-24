@@ -13,12 +13,18 @@ app.use(bodyParser.json());
 
 //express-handlebars es el motor de template
 var exphbs = require('express-handlebars');
+
 app.engine('handlebars', exphbs({
     defaultLayout: 'main', 
     helpers: {
         json: function (context) { return JSON.stringify(context); }
-    }
+    },
+    partialsDir: [        
+        'views/admin/partials/'
+    ]
 }));
+
+
 
 app.set('view engine', 'handlebars');
 
@@ -52,11 +58,12 @@ app.get('/admin/users/', userController.list);
 app.get('/admin/users/new', userController.set);
 app.post('/admin/users/new', userController.new);
 app.get('/admin/users/edit/:id', userController.get);
+app.post('/admin/users/edit/:id', userController.update);
 
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));
 app.use('/js', express.static(__dirname + '/js'));
 app.listen(3001, function () {
     console.log(__dirname + '/');
-    console.log('API REST corriendo en http://localhost:3000');
+    console.log('API REST corriendo en http://localhost:3001');
 });
