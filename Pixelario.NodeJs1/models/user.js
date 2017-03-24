@@ -10,6 +10,12 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    first_name: {
+        type: String
+    },
+    last_name: {
+        type: String
+    },
     role: {
         type: String,
         enum: ['super admin', 'admin', 'member', 'init'],

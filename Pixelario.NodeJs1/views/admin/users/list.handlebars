@@ -10,6 +10,9 @@
 				<th>
 					Usuario
 				</th>
+				<th style="width: 80px;">
+				Editar
+				</th>
                 <th style="width: 80px;">
 					Permisos
 				</th>
@@ -26,6 +29,9 @@
 					{{user.email}}
 				</td>
 					<td>
+						<a href="/admin/users/edit/{{user.id}}" class = "boton_grilla pencil" title="Editar usuario">Editar usuario</a>
+					</td>
+					<td>
 						<a href="/admin/users/roles/edit/{{user.id}}" class = "boton_grilla group_gear" title="Editar Roles">Editar Roles</a>
 					</td>
 					<td>
@@ -40,7 +46,7 @@
 			</tr>
 		{{/users}}	
 	<tr>
-		<td colspan="3"></td><td><a href="/admin/users/new" title="Nuevo usuario" class = "boton_grilla add">Nuevo usuario<a></td>
+		<td colspan="4"></td><td><a href="/admin/users/new" title="Nuevo usuario" class = "boton_grilla add">Nuevo usuario<a></td>
 	</tr>	
 	</table>
 	{{else}}

@@ -51,6 +51,7 @@ var userController = require('./controllers/userController.js');
 app.get('/admin/users/', userController.list);
 app.get('/admin/users/new', userController.set);
 app.post('/admin/users/new', userController.new);
+app.get('/admin/users/edit/:id', userController.get);
 
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));

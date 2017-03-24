@@ -6,7 +6,6 @@ exports.list = function (req, res) {
         users.forEach(function (item) { 
             _users.push({ user: { id: item._id, email: item.email } });
         });
-        console.log(_users);
         res.render('admin/users/list', {
             users: _users,
             helpers: {
@@ -34,5 +33,20 @@ exports.new = function (req, res) {
         else {
             res.redirect('/admin/users');
         }
+    });
+};
+exports.get = function (req, res) {
+    Users.findOne({ _id: req.params.id }).exec(function (err, user) {
+        var _user = {
+            id: user._id,
+            firstname: user.first_name,
+            lastname: user.last_name
+        };
+        console.log(_user);
+        res.render('admin/users/edit', {
+            user: _user,
+            appName: config.name,
+            layout: '../../views/admin/layout/CMS',
+        });
     });
 };
