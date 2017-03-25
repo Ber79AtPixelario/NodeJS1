@@ -1,0 +1,80 @@
+﻿{{#contentFor "titleContent"}}
+  {{appName}} | Administrador De Contenidos | Listado de roles
+{{/contentFor}}
+{{#contentFor "headerContent"}}
+  <link href="/css/bvalidator.css" rel="stylesheet" type="text/css" />  
+  <link href="/css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
+{{/contentFor}}
+{{#contentFor "h2Content"}}
+  {{appName}} | Administrador De Contenidos
+{{/contentFor}}
+{{#contentFor "topMenuContent"}}
+<ul>    
+    <li>
+		<a href="/admin/roles/" title="Seguridad">Seguridad</a>
+    </li>    
+</ul>
+{{/contentFor}}
+{{#contentFor "topPanelContent"}}
+<div id="panel">
+  <ul>
+    <li>
+      Bienvenido: 
+    </li>
+    <li>
+      <a href="/admin/roles/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
+    </li>
+    <li>
+      <a href="/admin/logoff" title="Salir" class="door_open">Salir</a>
+    </li>
+  </ul>
+</div>
+{{/contentFor}}﻿
+<div id="box">
+	<h3>Listado de roles</h2>
+	<div>
+	
+		
+	{{#if roles}}
+	<table>		
+			<tr>
+				<th>
+					Nombre
+				</th>
+				<th style="width: 80px;">
+				Editar
+				</th>                
+				<th style="width: 80px;">
+					Borrar
+				</th>				
+			</tr>
+		{{# roles}}
+			<tr>
+				<td>
+					{{role.name}}
+				</td>
+					<td>
+						<a href="/admin/roles/edit/{{role.id}}" class = "boton_grilla pencil" title="Editar role">Editar role</a>
+					</td>
+					<td>
+						<form action="/admin/roles/delete/" method="post">
+							<input type="hidden" name="id" value="{{role.id}}"/>
+							<input type="image" src="/img/icons/bin.png" value="Eliminar Role" title="Eliminar Role"
+								alt="Eliminar Role" />
+						</form>
+				</td>                    
+			</tr>
+		{{/roles}}	
+	<tr>
+		<td colspan="2"></td><td><a href="/admin/roles/new" title="Nuevo role" class = "boton_grilla add">Nuevo role<a></td>
+	</tr>	
+	</table>
+	{{else}}
+		No hay roles en la Base de datos.
+		<a href="/admin/roles/new" title="Nuevo role" class = "comandos_box add">Nuevo role<a>		
+	{{/if}}	
+</div>
+</div>
+
+{{#contentFor "scriptContent"}}  
+{{/contentFor}}

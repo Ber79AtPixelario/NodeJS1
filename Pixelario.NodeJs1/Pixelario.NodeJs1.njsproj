@@ -31,10 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="config\app.js" />
+    <Compile Include="controllers\roleController.js" />
     <Compile Include="controllers\userController.js" />
     <Compile Include="index.js" />
     <Compile Include="js\jquery.bvalidator-yc.js" />
     <Compile Include="js\jquery.cleditor.min.js" />
+    <Compile Include="models\role.js" />
     <Compile Include="models\user.js" />
     <Compile Include="server.js" />
     <Content Include="css\jquery.cleditor.css" />
@@ -1057,11 +1059,15 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\admin\home\index.handlebars" />
+    <Content Include="views\admin\layout\account.hbs" />
     <Content Include="views\admin\layout\CMS.hbs" />
     <Content Include="views\admin\partials\appName.hbs" />
     <Content Include="views\admin\partials\userMenu.hbs" />
     <Content Include="views\admin\partials\modulos.hbs" />
+    <Content Include="views\admin\roles\edit.hbs" />
     <Content Include="views\admin\users\edit.hbs" />
+    <Content Include="views\admin\roles\list.hbs" />
+    <Content Include="views\admin\roles\new.hbs" />
     <Content Include="views\admin\users\new.hbs" />
     <Content Include="views\admin\users\list.hbs" />
   </ItemGroup>
@@ -1077,6 +1083,7 @@
     <Folder Include="views\admin\" />
     <Folder Include="views\admin\home\" />
     <Folder Include="views\admin\layout\" />
+    <Folder Include="views\admin\roles\" />
     <Folder Include="views\admin\partials\" />
     <Folder Include="views\admin\users\" />
   </ItemGroup>

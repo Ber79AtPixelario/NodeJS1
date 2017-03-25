@@ -43,13 +43,24 @@ router.get("/", function (req, res) {
 });
 app.use("/admin", router);
 var userController = require('./controllers/userController.js');
+var roleController = require('./controllers/roleController.js');
 
+//Rutas para usuarios
 app.get('/admin/users/', userController.list);
 app.get('/admin/users/new', userController.set);
 app.post('/admin/users/new', userController.new);
 app.get('/admin/users/edit/:id', userController.get);
 app.post('/admin/users/edit/:id', userController.update);
 app.post('/admin/users/delete/', userController.delete);
+
+//Rutas para roles
+app.get('/admin/roles/', roleController.list);
+app.get('/admin/roles/new', roleController.set);
+app.post('/admin/roles/new', roleController.new);
+app.get('/admin/roles/edit/:id', roleController.get);
+app.post('/admin/roles/edit/:id', roleController.update);
+app.post('/admin/roles/delete/', roleController.delete);
+
 
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));
