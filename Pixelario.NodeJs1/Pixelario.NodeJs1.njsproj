@@ -34,8 +34,10 @@
     <Compile Include="controllers\userController.js" />
     <Compile Include="index.js" />
     <Compile Include="js\jquery.bvalidator-yc.js" />
+    <Compile Include="js\jquery.cleditor.min.js" />
     <Compile Include="models\user.js" />
     <Compile Include="server.js" />
+    <Content Include="css\jquery.cleditor.css" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />
     <Content Include="css\theme1.css" />
@@ -1055,11 +1057,13 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\admin\home\index.handlebars" />
-    <Content Include="views\admin\layout\CMS.handlebars" />
-    <Content Include="views\admin\partials\modulos.handlebars" />
-    <Content Include="views\admin\users\edit.handlebars" />
-    <Content Include="views\admin\users\new.handlebars" />
-    <Content Include="views\admin\users\list.handlebars" />
+    <Content Include="views\admin\layout\CMS.hbs" />
+    <Content Include="views\admin\partials\appName.hbs" />
+    <Content Include="views\admin\partials\userMenu.hbs" />
+    <Content Include="views\admin\partials\modulos.hbs" />
+    <Content Include="views\admin\users\edit.hbs" />
+    <Content Include="views\admin\users\new.hbs" />
+    <Content Include="views\admin\users\list.hbs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />

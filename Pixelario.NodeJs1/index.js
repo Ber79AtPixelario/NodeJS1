@@ -9,24 +9,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-
-
-//express-handlebars es el motor de template
-var exphbs = require('express-handlebars');
-
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main', 
-    helpers: {
-        json: function (context) { return JSON.stringify(context); }
-    },
+var hbs = require('express-hbs');
+app.engine('hbs', hbs.express4({    
     partialsDir: [        
         'views/admin/partials/'
     ]
 }));
 
 
-
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 
 var config = require('./config/app');
 
@@ -40,12 +32,10 @@ mongoose.connect(config.connectionString, function (err, res) {
         console.log('Succeeded connected to: ' + config.connectionString);
     }
 });
-router.use(function (req, res, next) {
-    console.log("/" + req.method);
+router.use(function (req, res, next) {    
     next();
 });
-router.get("/", function (req, res) {
-    console.log(config.name);
+router.get("/", function (req, res) {    
     res.render('admin/home/index',{
         helpers: {
             appName: config.name
@@ -59,6 +49,7 @@ app.get('/admin/users/new', userController.set);
 app.post('/admin/users/new', userController.new);
 app.get('/admin/users/edit/:id', userController.get);
 app.post('/admin/users/edit/:id', userController.update);
+app.post('/admin/users/delete/', userController.delete);
 
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));

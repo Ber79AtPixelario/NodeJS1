@@ -1,5 +1,37 @@
-﻿﻿<div id="box">
-	<h3>Nuevo usuario</h2>
+﻿{{#contentFor "titleContent"}}
+  {{appName}} | Administrador De Contenidos | Listado de usuarios
+{{/contentFor}}
+{{#contentFor "headerContent"}}
+  <link href="/css/bvalidator.css" rel="stylesheet" type="text/css" />  
+  <link href="/css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
+{{/contentFor}}
+{{#contentFor "h2Content"}}
+  {{appName}} | Administrador De Contenidos
+{{/contentFor}}
+{{#contentFor "topMenuContent"}}
+<ul>    
+    <li>
+		<a href="/admin/users/" title="Seguridad">Seguridad</a>
+    </li>    
+</ul>
+{{/contentFor}}
+{{#contentFor "topPanelContent"}}
+<div id="panel">
+  <ul>
+    <li>
+      Bienvenido: 
+    </li>
+    <li>
+      <a href="/admin/users/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
+    </li>
+    <li>
+      <a href="/admin/logoff" title="Salir" class="door_open">Salir</a>
+    </li>
+  </ul>
+</div>
+{{/contentFor}}﻿
+<div id="box">
+	<h3>Listado de usuarios</h2>
 	<div>
 	
 		
@@ -38,7 +70,8 @@
 						<a href="/admin/users/password/edit/{{user.id}}" class="boton_grilla key" title="Cambiar Contraseña">Cambiar Contraseña</a>
 					</td>
 					<td>
-						<form action="/admin/users/delete/{{user.id}}" method="post">
+						<form action="/admin/users/delete/" method="post">
+							<input type="hidden" name="id" value="{{user.id}}"/>
 							<input type="image" src="/img/icons/bin.png" value="Eliminar Usuario" title="Eliminar Usuario"
 								alt="Eliminar Usuario" />
 						</form>
@@ -51,7 +84,10 @@
 	</table>
 	{{else}}
 		No hay usuarios en la Base de datos.
-		<a href="/admin/users/new" title="Nuevo usuario" class = "comandos_box add>Nuevo usuario<a>		
+		<a href="/admin/users/new" title="Nuevo usuario" class = "comandos_box add">Nuevo usuario<a>		
 	{{/if}}	
 </div>
 </div>
+
+{{#contentFor "scriptContent"}}  
+{{/contentFor}}
