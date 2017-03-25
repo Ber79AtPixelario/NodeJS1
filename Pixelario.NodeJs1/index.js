@@ -52,7 +52,8 @@ app.post('/admin/users/new', userController.new);
 app.get('/admin/users/edit/:id', userController.get);
 app.post('/admin/users/edit/:id', userController.update);
 app.post('/admin/users/delete/', userController.delete);
-
+app.get('/admin/users/roles/:id', userController.getRoles);
+app.post('/admin/users/roles/:id', userController.setRoles);
 //Rutas para roles
 app.get('/admin/roles/', roleController.list);
 app.get('/admin/roles/new', roleController.set);

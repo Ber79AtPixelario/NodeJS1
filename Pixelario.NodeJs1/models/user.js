@@ -16,13 +16,16 @@ var UserSchema = new mongoose.Schema({
     last_name: {
         type: String
     },
-    role: {
-        type: String,
-        enum: ['super admin', 'admin', 'member', 'init'],
-        default: 'member'
-    }
+    roles: [{
+        type: String      
+    }]
 },{
         timestamps:true
     }
 );
+UserSchema.pre("save", function (next) {
+    if (this.roles.length == 0)
+        this.roles.push("init");    
+    next();
+});
 module.exports = mongoose.model('Users', UserSchema);
