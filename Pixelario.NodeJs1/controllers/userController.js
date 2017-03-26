@@ -129,10 +129,13 @@ exports.setRoles = function (req, res) {
             res.send(error);
         else {
             var _roles = [];            
-            req.body.role.forEach(function (item) {                
-                _roles.push(item);
-            });            
+            if (req.body.role && req.body.role.length > 0) {
+                req.body.role.forEach(function (item) {                    
+                    _roles.push(item);
+                });
+            }            
             user.roles = _roles;
+            console.log(user.roles);
             user.save(function (error, documento) {
                 if (error) {
                     res.send(error);

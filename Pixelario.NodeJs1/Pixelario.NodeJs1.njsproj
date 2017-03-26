@@ -1065,6 +1065,7 @@
     <Content Include="views\admin\partials\userMenu.hbs" />
     <Content Include="views\admin\partials\modulos.hbs" />
     <Content Include="views\admin\roles\edit.hbs" />
+    <Content Include="views\admin\users\roles.hbs" />
     <Content Include="views\admin\users\edit.hbs" />
     <Content Include="views\admin\roles\list.hbs" />
     <Content Include="views\admin\roles\new.hbs" />
