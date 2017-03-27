@@ -2,11 +2,24 @@
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var router = express.Router();
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+
+
+// passport config
+var User = require('./models/user');
+
+
 
 
 var hbs = require('express-hbs');
@@ -24,6 +37,8 @@ var config = require('./config/app');
 
 var mongoose = require('mongoose');
 
+
+
 var db = mongoose.connection;
 mongoose.connect(config.connectionString, function (err, res) {
     if (err) {
@@ -32,18 +47,23 @@ mongoose.connect(config.connectionString, function (err, res) {
         console.log('Succeeded connected to: ' + config.connectionString);
     }
 });
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 router.use(function (req, res, next) {    
     next();
 });
-router.get("/", function (req, res) {    
-    res.render('admin/home/index',{
-        helpers: {
-            appName: config.name
-        }, layout: false });
-});
-app.use("/admin", router);
-var userController = require('./controllers/userController.js');
-var roleController = require('./controllers/roleController.js');
+var homeController = require('./controllers/admin/homeController.js');
+var userController = require('./controllers/admin/userController.js');
+var roleController = require('./controllers/admin/roleController.js');
+
+//Rutas para login
+app.get('/admin/', homeController.login);
+app.post('/admin/login', passport.authenticate('local'), homeController.logon);
 
 //Rutas para usuarios
 app.get('/admin/users/', userController.list);

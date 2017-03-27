@@ -1,6 +1,6 @@
-﻿var Users = require('../models/user');
-var Roles = require('../models/role');
-var config = require('../config/app');
+﻿var Users = require('../../models/user');
+var Roles = require('../../models/role');
+var config = require('../../config/app');
 exports.list = function (req, res) {
     Users.find({}).exec(function (err, users) {
         var _users = [];

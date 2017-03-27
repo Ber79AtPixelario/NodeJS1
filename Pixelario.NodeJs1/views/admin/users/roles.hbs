@@ -1,0 +1,65 @@
+﻿{{#contentFor "titleContent"}}
+  {{appName}} | Administrador De Contenidos | Roles del usuario
+{{/contentFor}}
+{{#contentFor "headerContent"}}
+  <link href="/css/bvalidator.css" rel="stylesheet" type="text/css" />  
+  <link href="/css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
+{{/contentFor}}
+{{#contentFor "h2Content"}}
+  {{appName}} | Administrador De Contenidos
+{{/contentFor}}
+{{#contentFor "topMenuContent"}}
+<ul>    
+    <li>
+		<a href="/admin/users/" title="Seguridad">Seguridad</a>
+    </li>    
+</ul>
+{{/contentFor}}
+{{#contentFor "topPanelContent"}}
+<div id="panel">
+  <ul>
+    <li>
+      Bienvenido: 
+    </li>
+    <li>
+      <a href="/admin/users/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
+    </li>
+    <li>
+      <a href="/admin/logoff" title="Salir" class="door_open">Salir</a>
+    </li>
+  </ul>
+</div>
+{{/contentFor}}
+  <div id="box">
+	<div>
+	{{#if roles}}
+		<form action="/admin/users/roles/{{ user.id }}" method="post" id="form">
+			<fieldset>
+				<legend>Editar roles usuario</legend>
+				{{# roles}}
+<label>
+				<input type="checkbox" name="role" {{#if role.userIs}}checked="checked"{{/if}} value="{{role.name}}">{{role.name}}</label><br/>
+				{{/roles}}
+			</fieldset>
+			<div class="alignCenter">
+				<input type="submit" value="Guardar"/>
+				<a href="/admin/users/" title="Cancelar">Cancelar</a>
+			</div>
+		</form>
+	{{else}}
+		No hay roles en la Base de datos.
+		<a href="/admin/roles/new" title="Nuevo role" class = "comandos_box add">Nuevo role<a>		
+	{{/if}}	
+	</div>
+</div>
+
+{{#contentFor "scriptContent"}}
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>  
+  <script src="/js/jquery.bvalidator-yc.js" type="text/javascript"></script>
+  <script src="/js/jquery.cleditor.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#form').bValidator();      
+    });
+  </script>  
+{{/contentFor}}

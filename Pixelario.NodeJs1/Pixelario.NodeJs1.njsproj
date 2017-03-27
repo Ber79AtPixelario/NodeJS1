@@ -31,8 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="config\app.js" />
-    <Compile Include="controllers\roleController.js" />
-    <Compile Include="controllers\userController.js" />
+    <Compile Include="controllers\admin\roleController.js" />
+    <Compile Include="controllers\admin\homeController.js" />
+    <Compile Include="controllers\admin\userController.js" />
     <Compile Include="index.js" />
     <Compile Include="js\jquery.bvalidator-yc.js" />
     <Compile Include="js\jquery.cleditor.min.js" />
@@ -1058,7 +1059,7 @@
     <Content Include="img\toolbar.gif" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="views\admin\home\index.handlebars" />
+    <Content Include="views\admin\home\index.hbs" />
     <Content Include="views\admin\layout\account.hbs" />
     <Content Include="views\admin\layout\CMS.hbs" />
     <Content Include="views\admin\partials\appName.hbs" />
@@ -1073,6 +1074,7 @@
     <Content Include="views\admin\users\list.hbs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="controllers\admin\" />
     <Folder Include="css\" />
     <Folder Include="img\" />
     <Folder Include="img\icons\" />
