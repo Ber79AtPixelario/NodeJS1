@@ -39,6 +39,8 @@
     <Compile Include="js\jquery.cleditor.min.js" />
     <Compile Include="models\role.js" />
     <Compile Include="models\user.js" />
+    <Compile Include="passport\init.js" />
+    <Compile Include="passport\signup.js" />
     <Compile Include="server.js" />
     <Content Include="css\jquery.cleditor.css" />
     <Content Include="css\style.css" />
@@ -1082,6 +1084,7 @@
     <Folder Include="config\" />
     <Folder Include="models\" />
     <Folder Include="controllers\" />
+    <Folder Include="passport\" />
     <Folder Include="views\" />
     <Folder Include="views\admin\" />
     <Folder Include="views\admin\home\" />

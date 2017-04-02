@@ -16,11 +16,6 @@ app.use(require('express-session')({
 }));
 
 
-// passport config
-var User = require('./models/user');
-
-
-
 
 var hbs = require('express-hbs');
 app.engine('hbs', hbs.express4({    
@@ -48,17 +43,29 @@ mongoose.connect(config.connectionString, function (err, res) {
     }
 });
 
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
+// passport config
+var passport = require('passport');
+var expressSession = require('express-session');
+
+// TODO - Why Do we need this key ?
+app.use(expressSession({ secret: 'mySecretKey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Using the flash middleware provided by connect-flash to store messages in session
+// and displaying in templates
+var flash = require('connect-flash');
+app.use(flash());
+
+// Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
 router.use(function (req, res, next) {    
     next();
 });
 var homeController = require('./controllers/admin/homeController.js');
-var userController = require('./controllers/admin/userController.js');
+var userController = require('./controllers/admin/userController.js')(passport);
 var roleController = require('./controllers/admin/roleController.js');
 
 //Rutas para login
@@ -66,14 +73,15 @@ app.get('/admin/', homeController.login);
 app.post('/admin/login', passport.authenticate('local'), homeController.logon);
 
 //Rutas para usuarios
-app.get('/admin/users/', userController.list);
-app.get('/admin/users/new', userController.set);
-app.post('/admin/users/new', userController.new);
-app.get('/admin/users/edit/:id', userController.get);
-app.post('/admin/users/edit/:id', userController.update);
-app.post('/admin/users/delete/', userController.delete);
-app.get('/admin/users/roles/:id', userController.getRoles);
-app.post('/admin/users/roles/:id', userController.setRoles);
+//app.get('/admin/users/', userController.list);
+//app.get('/admin/users/new', userController.set);
+//app.post('/admin/users/new', userController.new);
+//app.get('/admin/users/edit/:id', userController.get);
+//app.post('/admin/users/edit/:id', userController.update);
+//app.post('/admin/users/delete/', userController.delete);
+//app.get('/admin/users/roles/:id', userController.getRoles);
+//app.post('/admin/users/roles/:id', userController.setRoles);
+app.use(userController);
 //Rutas para roles
 app.get('/admin/roles/', roleController.list);
 app.get('/admin/roles/new', roleController.set);
