@@ -49,7 +49,13 @@ var passport = require('passport');
 var expressSession = require('express-session');
 
 // TODO - Why Do we need this key ?
-app.use(expressSession({ secret: 'mySecretKey' }));
+app.use(expressSession({
+    secret: 'mySecretKey', 
+    name: 'cookiename',
+    store: mongoose.connection, // connect-mongo session store
+    proxy: true,
+    resave: true,
+    saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -64,13 +70,14 @@ initPassport(passport);
 router.use(function (req, res, next) {    
     next();
 });
-var homeController = require('./controllers/admin/homeController.js');
+var homeController = require('./controllers/admin/homeController.js')(passport);
 var userController = require('./controllers/admin/userController.js')(passport);
 var roleController = require('./controllers/admin/roleController.js');
 
 //Rutas para login
-app.get('/admin/', homeController.login);
-app.post('/admin/login', passport.authenticate('local'), homeController.logon);
+app.use(homeController);
+//app.get('/admin/', homeController.login);
+//app.post('/admin/login', passport.authenticate('local'), homeController.logon);
 
 //Rutas para usuarios
 //app.get('/admin/users/', userController.list);

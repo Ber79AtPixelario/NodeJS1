@@ -32,10 +32,9 @@ var UserSchema = new mongoose.Schema({
     }
 );
 UserSchema.pre("save", function (next) {
-    if (this.roles.length == 0)
-        this.roles.push("init");    
     next();
 });
+
 UserSchema.methods.generateHash = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };

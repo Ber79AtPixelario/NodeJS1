@@ -34,7 +34,7 @@ module.exports = function (passport) {
                     _user.save(function (err) {
                         if (err) {
                             console.log('Error in Saving user: ' + err);
-                            throw err;
+                            return done(err, _user);
                         }
                         console.log('User Registration succesful');
                         return done(null, _user);

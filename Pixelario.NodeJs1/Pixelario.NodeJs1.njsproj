@@ -40,6 +40,7 @@
     <Compile Include="models\role.js" />
     <Compile Include="models\user.js" />
     <Compile Include="passport\init.js" />
+    <Compile Include="passport\login.js" />
     <Compile Include="passport\signup.js" />
     <Compile Include="server.js" />
     <Content Include="css\jquery.cleditor.css" />
@@ -1068,6 +1069,7 @@
     <Content Include="views\admin\partials\userMenu.hbs" />
     <Content Include="views\admin\partials\modulos.hbs" />
     <Content Include="views\admin\roles\edit.hbs" />
+    <Content Include="views\admin\users\changePassword.hbs" />
     <Content Include="views\admin\users\roles.hbs" />
     <Content Include="views\admin\users\edit.hbs" />
     <Content Include="views\admin\roles\list.hbs" />

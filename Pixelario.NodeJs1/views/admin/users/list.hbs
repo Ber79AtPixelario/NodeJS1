@@ -19,7 +19,7 @@
 <div id="panel">
   <ul>
     <li>
-      Bienvenido: 
+      Bienvenido: {{userAuthenticated.username}}
     </li>
     <li>
       <a href="/admin/users/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
@@ -58,7 +58,7 @@
 		{{# users}}
 			<tr>
 				<td>
-					{{user.email}}
+					<a href="javascript:void(0)"; title="{{user.email}}">{{user.username}}</a>					
 				</td>
 					<td>
 						<a href="/admin/users/edit/{{user.id}}" class = "boton_grilla pencil" title="Editar usuario">Editar usuario</a>
@@ -67,7 +67,7 @@
 						<a href="/admin/users/roles/{{user.id}}" class = "boton_grilla group_gear" title="Editar Roles">Editar Roles</a>
 					</td>
 					<td>
-						<a href="/admin/users/password/edit/{{user.id}}" class="boton_grilla key" title="Cambiar Contraseña">Cambiar Contraseña</a>
+						<a href="/admin/users/password/{{user.id}}" class="boton_grilla key" title="Cambiar Contraseña">Cambiar Contraseña</a>
 					</td>
 					<td>
 						<form action="/admin/users/delete/" method="post">
