@@ -43,6 +43,7 @@
     <Compile Include="passport\login.js" />
     <Compile Include="passport\signup.js" />
     <Compile Include="server.js" />
+    <Content Include="bower.json" />
     <Content Include="css\jquery.cleditor.css" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />
