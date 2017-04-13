@@ -1066,11 +1066,13 @@
     <Content Include="views\admin\home\index.hbs" />
     <Content Include="views\admin\layout\account.hbs" />
     <Content Include="views\admin\layout\CMS.hbs" />
+    <Content Include="views\admin\layout\MetroUI.hbs" />
     <Content Include="views\admin\partials\appName.hbs" />
     <Content Include="views\admin\partials\userMenu.hbs" />
     <Content Include="views\admin\partials\modulos.hbs" />
     <Content Include="views\admin\roles\edit.hbs" />
     <Content Include="views\admin\users\changePassword.hbs" />
+    <Content Include="views\admin\users\list - Copy.hbs" />
     <Content Include="views\admin\users\roles.hbs" />
     <Content Include="views\admin\users\edit.hbs" />
     <Content Include="views\admin\roles\list.hbs" />

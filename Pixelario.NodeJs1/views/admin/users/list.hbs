@@ -2,43 +2,56 @@
   {{appName}} | Administrador De Contenidos | Listado de usuarios
 {{/contentFor}}
 {{#contentFor "headerContent"}}
-  <link href="/css/bvalidator.css" rel="stylesheet" type="text/css" />  
-  <link href="/css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
 {{/contentFor}}
 {{#contentFor "h2Content"}}
-  {{appName}} | Administrador De Contenidos
+  {{appName}}
 {{/contentFor}}
 {{#contentFor "topMenuContent"}}
-<ul>    
-    <li>
-		<a href="/admin/users/" title="Seguridad">Seguridad</a>
-    </li>    
-</ul>
+<span class="app-bar-divider"></span>
+        <ul class="app-bar-menu">
+            <li data-flexorderorigin="0" data-flexorder="1">
+                <a href="" class="dropdown-toggle">Seguridad</a>
+                <ul class="d-menu" data-role="dropdown">                    
+                    <li>
+                        <a href="" class="dropdown-toggle">Usuarios</a>
+                        <ul class="d-menu" data-role="dropdown">
+                            <li><a href="/Admin/Users/" title="Listado de usuario">Listado</a></li>
+                            <li><a href="/Admin/Users/New/" title="Nuevo usurio">Nuevo</a></li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="" class="dropdown-toggle">Roles</a>
+                        <ul class="d-menu" data-role="dropdown">
+                            <li><a href="/Admin/Roles/" title="Listado de roles">Listado</a></li>
+                            <li><a href="/Admin/Roles/New/" title="Nuevo role">Nuevo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>            
+        </ul>
 {{/contentFor}}
-{{#contentFor "topPanelContent"}}
-<div id="panel">
-  <ul>
-    <li>
-      Bienvenido: {{userAuthenticated.username}}
-    </li>
-    <li>
-      <a href="/admin/users/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
-    </li>
-    <li>
-      <a href="/admin/logoff" title="Salir" class="door_open">Salir</a>
-    </li>
-  </ul>
-</div>
+{{#contentFor "userMenuContent"}}
+ <div class="app-bar-element place-right">
+            <span class="dropdown-toggle"><span class="mif-cog"></span> {{userAuthenticated.username}}</span>
+            <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" 
+				data-no-close="true" style="width: 220px">
+                <ul class="unstyled-list fg-dark">
+                    <li><a href="" class="fg-white1 fg-hover-yellow">Profile</a></li>
+                    <li><a href="/admin/users/changepassword/" tittle="Cambiar Password" class="fg-white2 fg-hover-yellow">Cambiar password</a></li>
+                    <li><a href="/admin/logoff" title="Salir" class="fg-white3 fg-hover-yellow">Salir</a></li>
+                </ul>
+            </div>
+        </div>
 {{/contentFor}}﻿
-<div id="box">
-	<h3>Listado de usuarios</h2>
-	<div>
-	
-		
+<h1 class="text-light">Listado de usuarios<span class="mif-drive-eta place-right"></span></h1>
+	<hr class="thin bg-grayLighter">
+	<a href="/Admin/Users/New/" title="Nuevo"><span class="mif-plus"></span> Nuevo</button>
+	<hr class="thin bg-grayLighter">
+    
 	{{#if users}}
-<table>
-		
-			<tr>
+                <table class="dataTable border bordered" data-role="datatable" data-auto-width="false">
+		 <thead>
+                        <tr>
 				<th>
 					Usuario
 				</th>
@@ -55,6 +68,7 @@
 					Borrar
 				</th>				
 			</tr>
+</thead>
 		{{# users}}
 			<tr>
 				<td>
@@ -77,17 +91,15 @@
 						</form>
 				</td>                    
 			</tr>
-		{{/users}}	
-	<tr>
-		<td colspan="4"></td><td><a href="/admin/users/new" title="Nuevo usuario" class = "boton_grilla add">Nuevo usuario<a></td>
-	</tr>	
+		{{/users}}		
 	</table>
 	{{else}}
 		No hay usuarios en la Base de datos.
-		<a href="/admin/users/new" title="Nuevo usuario" class = "comandos_box add">Nuevo usuario<a>		
 	{{/if}}	
 </div>
 </div>
 
 {{#contentFor "scriptContent"}}  
+	<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>	
+	<script src="http://cdn.metroui.org.ua/js/metro.min.js"></script>
 {{/contentFor}}

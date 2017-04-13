@@ -50,7 +50,7 @@ module.exports = function (passport) {
                         block.push(options.fn(this));
                     }
                 }, 
-                layout: 'admin/layout/CMS',
+                layout: 'admin/layout/MetroUI',
             });
         });
     });

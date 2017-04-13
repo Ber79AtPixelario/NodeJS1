@@ -1,0 +1,93 @@
+﻿{{#contentFor "titleContent"}}
+  {{appName}} | Administrador De Contenidos | Listado de usuarios
+{{/contentFor}}
+{{#contentFor "headerContent"}}
+  <link href="/css/bvalidator.css" rel="stylesheet" type="text/css" />  
+  <link href="/css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
+{{/contentFor}}
+{{#contentFor "h2Content"}}
+  {{appName}} | Administrador De Contenidos
+{{/contentFor}}
+{{#contentFor "topMenuContent"}}
+<ul>    
+    <li>
+		<a href="/admin/users/" title="Seguridad">Seguridad</a>
+    </li>    
+</ul>
+{{/contentFor}}
+{{#contentFor "topPanelContent"}}
+<div id="panel">
+  <ul>
+    <li>
+      Bienvenido: {{userAuthenticated.username}}
+    </li>
+    <li>
+      <a href="/admin/users/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
+    </li>
+    <li>
+      <a href="/admin/logoff" title="Salir" class="door_open">Salir</a>
+    </li>
+  </ul>
+</div>
+{{/contentFor}}﻿
+<div id="box">
+	<h3>Listado de usuarios</h2>
+	<div>
+	
+		
+	{{#if users}}
+<table>
+		
+			<tr>
+				<th>
+					Usuario
+				</th>
+				<th style="width: 80px;">
+				Editar
+				</th>
+                <th style="width: 80px;">
+					Permisos
+				</th>
+                <th style="width: 80px;">
+					Contraseña
+				</th>                
+				<th style="width: 80px;">
+					Borrar
+				</th>				
+			</tr>
+		{{# users}}
+			<tr>
+				<td>
+					<a href="javascript:void(0)"; title="{{user.email}}">{{user.username}}</a>					
+				</td>
+					<td>
+						<a href="/admin/users/edit/{{user.id}}" class = "boton_grilla pencil" title="Editar usuario">Editar usuario</a>
+					</td>
+					<td>
+						<a href="/admin/users/roles/{{user.id}}" class = "boton_grilla group_gear" title="Editar Roles">Editar Roles</a>
+					</td>
+					<td>
+						<a href="/admin/users/password/{{user.id}}" class="boton_grilla key" title="Cambiar Contraseña">Cambiar Contraseña</a>
+					</td>
+					<td>
+						<form action="/admin/users/delete/" method="post">
+							<input type="hidden" name="id" value="{{user.id}}"/>
+							<input type="image" src="/img/icons/bin.png" value="Eliminar Usuario" title="Eliminar Usuario"
+								alt="Eliminar Usuario" />
+						</form>
+				</td>                    
+			</tr>
+		{{/users}}	
+	<tr>
+		<td colspan="4"></td><td><a href="/admin/users/new" title="Nuevo usuario" class = "boton_grilla add">Nuevo usuario<a></td>
+	</tr>	
+	</table>
+	{{else}}
+		No hay usuarios en la Base de datos.
+		<a href="/admin/users/new" title="Nuevo usuario" class = "comandos_box add">Nuevo usuario<a>		
+	{{/if}}	
+</div>
+</div>
+
+{{#contentFor "scriptContent"}}  
+{{/contentFor}}
