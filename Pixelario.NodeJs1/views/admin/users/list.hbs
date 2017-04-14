@@ -49,46 +49,44 @@
 	<hr class="thin bg-grayLighter">
     
 	{{#if users}}
-                <table class="dataTable border bordered" data-role="datatable" data-auto-width="false">
+                <table class="table striped border ">
 		 <thead>
                         <tr>
 				<th>
-					Usuario
+					Usuarios
 				</th>
-				<th style="width: 80px;">
+<th></th>
+				<!--<th>
 				Editar
 				</th>
-                <th style="width: 80px;">
+                <th>
 					Permisos
 				</th>
-                <th style="width: 80px;">
+                <th>
 					Contraseña
 				</th>                
-				<th style="width: 80px;">
+				<th>
 					Borrar
-				</th>				
+				</th>-->				
 			</tr>
 </thead>
 		{{# users}}
 			<tr>
 				<td>
 					<a href="javascript:void(0)"; title="{{user.email}}">{{user.username}}</a>					
-				</td>
-					<td>
-						<a href="/admin/users/edit/{{user.id}}" class = "boton_grilla pencil" title="Editar usuario">Editar usuario</a>
-					</td>
-					<td>
-						<a href="/admin/users/roles/{{user.id}}" class = "boton_grilla group_gear" title="Editar Roles">Editar Roles</a>
-					</td>
-					<td>
-						<a href="/admin/users/password/{{user.id}}" class="boton_grilla key" title="Cambiar Contraseña">Cambiar Contraseña</a>
-					</td>
-					<td>
-						<form action="/admin/users/delete/" method="post">
+				</td><td><div class="toolbar">
+    <div class="toolbar-section place-right">
+					
+						<a href="/admin/users/edit/{{user.id}}" title="Editar usuario" class="button"><span class="mif-pencil"></span></a>
+					
+						<a href="/admin/users/roles/{{user.id}}" title="Editar Roles" class="button"><span class="mif-equalizer"></a>
+					
+						<a href="/admin/users/password/{{user.id}}" title="Cambiar Contraseña" class="button"><span class="mif-key"></a>
+					
+						<form action="/admin/users/delete/" method="post" style="display:inline;">
 							<input type="hidden" name="id" value="{{user.id}}"/>
-							<input type="image" src="/img/icons/bin.png" value="Eliminar Usuario" title="Eliminar Usuario"
-								alt="Eliminar Usuario" />
-						</form>
+							<button  title="Eliminar Usuario" alt="Eliminar Usuario"  class="button"><span class="mif-bin"></span></button>
+						</form></div></div>
 				</td>                    
 			</tr>
 		{{/users}}		
