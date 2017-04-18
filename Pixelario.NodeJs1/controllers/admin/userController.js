@@ -58,7 +58,7 @@ module.exports = function (passport) {
         res.render('admin/users/new', {
             userAuthenticated: req.user,
             appName: config.name,
-            layout: 'admin/layout/CMS',
+            layout: 'admin/layout/MetroUI',
         });
     });
     router.post('/admin/users/new', isSuperAdmin,  passport.authenticate('signup', {
@@ -74,10 +74,12 @@ module.exports = function (passport) {
                 firstname: user.first_name,
                 lastname: user.last_name
             };
+            console.log(user);
+
             res.render('admin/users/edit', {
                 user: _user,
                 appName: config.name,
-                layout: 'admin/layout/CMS',
+                layout: 'admin/layout/MetroUI',
             });
         });
     });
@@ -85,6 +87,7 @@ module.exports = function (passport) {
         Users.findById(req.params.id, function (err, user) {
             user.first_name = req.body.firstname;
             user.last_name = req.body.lastname;
+            console.log(user);
             user.save(function (error, documento) {
                 if (error) {
                     res.send(error);

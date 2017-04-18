@@ -6,43 +6,82 @@
   <link href="/css/jquery.cleditor.css" rel="stylesheet" type="text/css" />
 {{/contentFor}}
 {{#contentFor "h2Content"}}
-  {{appName}} | Administrador De Contenidos
+  {{appName}}
 {{/contentFor}}
 {{#contentFor "topMenuContent"}}
-<ul>    
-    <li>
-		<a href="/admin/users/" title="Seguridad">Seguridad</a>
-    </li>    
-</ul>
+<span class="app-bar-divider"></span>
+        <ul class="app-bar-menu">
+            <li data-flexorderorigin="0" data-flexorder="1">
+                <a href="" class="dropdown-toggle">Seguridad</a>
+                <ul class="d-menu" data-role="dropdown">                    
+                    <li>
+                        <a href="" class="dropdown-toggle">Usuarios</a>
+                        <ul class="d-menu" data-role="dropdown">
+                            <li><a href="/Admin/Users/" title="Listado de usuario">Listado</a></li>
+                            <li><a href="/Admin/Users/New/" title="Nuevo usurio">Nuevo</a></li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="" class="dropdown-toggle">Roles</a>
+                        <ul class="d-menu" data-role="dropdown">
+                            <li><a href="/Admin/Roles/" title="Listado de roles">Listado</a></li>
+                            <li><a href="/Admin/Roles/New/" title="Nuevo role">Nuevo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>            
+        </ul>
 {{/contentFor}}
 {{#contentFor "topPanelContent"}}
-<div id="panel">
-  <ul>
-    <li>
-      Bienvenido: 
-    </li>
-    <li>
-      <a href="/admin/users/changepassword/" tittle="Cambiar Password" class="key">Cambiar password</a>
-    </li>
-    <li>
-      <a href="/admin/logoff" title="Salir" class="door_open">Salir</a>
-    </li>
-  </ul>
-</div>
+ <div class="app-bar-element place-right">
+            <span class="dropdown-toggle"><span class="mif-cog"></span> {{userAuthenticated.username}}</span>
+            <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" 
+				data-no-close="true" style="width: 220px">
+                <ul class="unstyled-list fg-dark">
+                    <li><a href="" class="fg-white1 fg-hover-yellow">Profile</a></li>
+                    <li><a href="/admin/users/changepassword/" tittle="Cambiar Password" class="fg-white2 fg-hover-yellow">Cambiar password</a></li>
+                    <li><a href="/admin/logoff" title="Salir" class="fg-white3 fg-hover-yellow">Salir</a></li>
+                </ul>
+            </div>
+        </div>
 {{/contentFor}}
-  <div id="box">
-	<div>
-		<form action="/admin/users/edit/{{ user.id }}" method="post" id="form">
-			<fieldset>
-				<legend>Editar usuario</legend>
-				<label for="firstname">Nombre:</label><input type="text" name="firstname" id="firstname" data-bvalidator="required" data-bvalidator-msg="Ingrese el nombre del usuario." value="{{ user.firstname }}"/><br/>
-				<label for="lastname">Apellido:</label><input type="text" name="lastname" id="lastname" data-bvalidator="required" data-bvalidator-msg="Ingrese el apellido del usuario." value="{{ user.lastname }}"/><br/>	
-			</fieldset>
-			<div class="alignCenter">
-				<input type="submit" value="Guardar"/>
-				<a href="/admin/users/" title="Cancelar">Cancelar</a>
+  	<h1 class="text-light">Editar usuario<span class="mif-users place-right"></span></h1>
+	<hr class="thin bg-grayLighter">
+	<div class="grid">
+		<div class="row cells2">
+			<div class="cell colspan9">	
+				<form action="/admin/users/edit/{{ user.id }}" method="post" id="form">					
+					<div class="row">
+			<div class="cell colspan12">
+				<label for="firstname"  class="block">Nombre:</label>
+				<div class="input-control text full-size" data-role="input">
+					<input type="text" name="firstname" id="firstname" 
+						data-validate-func="required"
+						data-validate-hint="Ingrese el nombre del usuario." data-hint-position="left"
+						value="{{ user.firstname }}"/><span class="input-state-error mif-warning"></span><span class="input-state-success mif-checkmark"></span>
+				</div>			
 			</div>
-		</form>
+		</div>
+		<div class="row">
+			<div class="cell colspan12">
+				<label for="lastname"  class="block">Apellido:</label>
+				<div class="input-control text full-size" data-role="input">
+					<input type="text" name="lastname" id="lastname" 
+						data-validate-func="required"
+						data-validate-hint="Ingrese el apellido del usuario." data-hint-position="left" 
+						value="{{ user.lastname }}"/><span class="input-state-error mif-warning"></span><span class="input-state-success mif-checkmark"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="cell colspan12">
+				<input type="submit" value="Guardar" class="button primary"/>
+				<a href="/admin/users/" title="Cancelar" class="link">Cancelar</a>
+			</div>			
+		</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
 

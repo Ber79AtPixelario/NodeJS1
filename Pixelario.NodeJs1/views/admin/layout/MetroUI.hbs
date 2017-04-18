@@ -5,6 +5,31 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.metroui.org.ua/css/metro.min.css" />
 	<link rel="stylesheet" type="text/css" href="http://cdn.metroui.org.ua/css/metro-icons.min.css" />
 	{{{block 'headerContent'}}}
+	<style>
+        html, body {
+            height: 100%;
+        }
+        body {
+        }
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        .table .input-control.checkbox {
+            line-height: 1;
+            min-height: 0;
+            height: auto;
+        }
+        @media screen and (max-width: 800px){
+            #cell-sidebar {
+                flex-basis: 52px;
+            }
+            #cell-content {
+                flex-basis: calc(100% - 52px);
+            }
+        }
+    </style>
 </head>
 <body class="bg-steel">
 	<div class="app-bar fixed-top darcula" data-role="appbar">
@@ -12,26 +37,17 @@
         {{{block 'topMenuContent'}}}
 		{{{block 'userMenuContent'}}}
 	</div>
- <div class="page-content">
-	<div class="flex-grid no-responsive-future" style="height: 100%;">
-		<div class="row" style="height: 100%">
-			<div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
-			</div>
-            <div class="cell auto-size padding20 bg-white" id="cell-content">
-                {{{body}}}
-            </div>            
-        </div>
-        <div id="footer" style="background-color: #F3F9FF;">
-            <div id="credits">
-                Desarrollo por <a href='http://www.pixelario.com.ar/?ref=admin_' target="_blank" title="Desarrollado por Pixelario">Pixelario</a>
-            </div>
-            <div id="styleswitcher" style="background-color: #F3F9FF;">
-                Copyright© año 2017
-            </div>
-            <br />
-        </div>
-    </div>
-</div>
+	<div class="page-content">
+		<div class="flex-grid no-responsive-future" style="height: 100%;">
+			<div class="row" style="height: 100%">
+				<div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
+				</div>
+				<div class="cell auto-size padding20 bg-white" id="cell-content">
+					{{{body}}}					
+				</div>            
+			</div>        
+		</div>
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	{{{block 'scriptContent'}}}
 </body>
